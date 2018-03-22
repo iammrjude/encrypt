@@ -2,20 +2,23 @@ import sys
 
 
 def encrypt(file_object, keyValue):
+    # Read a text file character by character
     for line in file_object:
         for ch in line:
-            if ch != ' ' or ch != '.' or ch != ',' or ch != '"':
-                print encode(ch, keyValue),
+            if ch != " " or ch != "." or ch != "," or ch != "\n":
+                ch = encode(ch, keyValue)
+            print ch,
 
 
 def encode(ch, keyValue):
-    newCh = (ord(ch)+keyValue)
-    if newCh == 'j' or newCh == 'w' or newCh == 'k':
-        newCh == (ord(ch)+keyValue)
-    if newCh > ord('z'):
-        newCh -= 26
-
-    return chr(newCh)
+    # Define a latin alphabet
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "l", "m",
+                "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
+    # Search in the alphabet the same word
+    for i in alphabet:
+        if ch == i:
+            # Encode the current character
+            return alphabet[(alphabet.index(i) + keyValue) % 23]
 
 
 if __name__ == '__main__':
