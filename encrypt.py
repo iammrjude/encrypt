@@ -1,13 +1,24 @@
 import sys
 
 
-def encrypt(file_object, keyValue):
+def encrypt(originalText, keyValue):
+    text = ''
     # Read a text file character by character
-    for line in file_object:
+    for line in originalText:
         for ch in line:
-            if ch != " " or ch != "." or ch != "," or ch != "\n":
-                ch = encode(ch, keyValue)
-            print ch,
+            if isExeption(ch):
+                text += ch
+            # Upper case
+            elif ch.isupper():
+                ch = ch.lower()
+                newCh = str(encode(ch, keyValue))
+                newCh = newCh.upper()
+                text += newCh
+            else:
+                newCh = str(encode(ch, keyValue))
+                text += newCh
+    encryptedText.write(text)
+    encryptedText.close()
 
 
 def encode(ch, keyValue):
@@ -21,7 +32,13 @@ def encode(ch, keyValue):
             return alphabet[(alphabet.index(i) + keyValue) % 23]
 
 
+def isExeption(ch):
+    return (ch == " " or ch == "," or ch == "." or ch == "\n" or ch == "?"
+            or ch == "!" or ch == ":")
+
+
 if __name__ == '__main__':
-    file_object = open("catil-1.1.txt", "r")
+    originalText = open(sys.argv[2], 'r')
+    encryptedText = open(sys.argv[3], 'w')
     keyValue = int(sys.argv[1])
-    encrypt(file_object, keyValue)
+    encrypt(originalText, keyValue)
