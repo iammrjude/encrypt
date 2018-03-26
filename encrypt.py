@@ -7,7 +7,7 @@ def encrypt(originalText, keyValue, line, text):
         for ch in line:
             if isExeption(ch):
                 text += ch
-                # Upper case
+            # Upper case
             elif ch.isupper():
                 ch = ch.lower()
                 newCh = str(encode(ch, keyValue))
