@@ -30,7 +30,11 @@ def encode(ch, keyValue):
                 "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
     # Search in the alphabet the same word
     for i in alphabet:
-        if ch == i:
+        if ch == "o" or ch == "p" or ch == "t" or ch == "c":
+            # Encode special characters
+            return alphabet[(alphabet.index(ch) + keyValue * 2) % 23]
+
+        elif ch == i:
             # Encode the current character
             return alphabet[(alphabet.index(i) + keyValue) % 23]
 
