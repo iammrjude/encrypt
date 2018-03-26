@@ -1,14 +1,13 @@
 import sys
 
 
-def encrypt(originalText, keyValue):
-    text = ''
-    # Read a text file character by character
-    for line in originalText:
+def encrypt(originalText, keyValue, line, text):
+    try:
+        # Read a text file character by character
         for ch in line:
             if isExeption(ch):
                 text += ch
-            # Upper case
+                # Upper case
             elif ch.isupper():
                 ch = ch.lower()
                 newCh = str(encode(ch, keyValue))
@@ -17,8 +16,12 @@ def encrypt(originalText, keyValue):
             else:
                 newCh = str(encode(ch, keyValue))
                 text += newCh
-    encryptedText.write(text)
-    encryptedText.close()
+        # Recursive method reading line by line
+        return encrypt(originalText, keyValue, originalText.next(), text)
+    # EOF
+    except StopIteration:
+        encryptedText.write(text)
+        encryptedText.close()
 
 
 def encode(ch, keyValue):
@@ -41,4 +44,5 @@ if __name__ == '__main__':
     originalText = open(sys.argv[2], 'r')
     encryptedText = open(sys.argv[3], 'w')
     keyValue = int(sys.argv[1])
-    encrypt(originalText, keyValue)
+    text = ''
+    encrypt(originalText, keyValue, originalText.readline(), text)
