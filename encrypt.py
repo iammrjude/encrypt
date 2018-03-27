@@ -28,20 +28,21 @@ def encode(ch, keyValue):
     # Define a latin alphabet
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "l", "m",
                 "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
+
+    # Special case characters
+    if ch == "o" or ch == "p" or ch == "t" or ch == "c":
+        return alphabet[(alphabet.index(ch) + keyValue * 2) % 23]
+        
     # Search in the alphabet the same word
     for i in alphabet:
-        if ch == "o" or ch == "p" or ch == "t" or ch == "c":
-            # Encode special characters
-            return alphabet[(alphabet.index(ch) + keyValue * 2) % 23]
-
-        elif ch == i:
+        if ch == i:
             # Encode the current character
             return alphabet[(alphabet.index(i) + keyValue) % 23]
 
 
 def isExeption(ch):
     return (ch == " " or ch == "," or ch == "." or ch == "\n" or ch == "?"
-            or ch == "!" or ch == ":")
+            or ch == "!" or ch == ":" or ch == "\"" or ch == ';')
 
 
 if __name__ == '__main__':
