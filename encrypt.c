@@ -71,9 +71,9 @@ char encode(char ch, int keyValue)
     if(ch == alphabet[i])
     {
       //Special case characters
-      if (ch == 'o' || ch == 'p' || ch == 't' || ch == 'c')
+      if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
       {
-        return alphabet[(i + (keyValue * 2)) % 23];
+        return alphabet[(i + (keyValue * 3)) % 23];
       }
       else
       {
