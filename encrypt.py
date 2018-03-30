@@ -30,9 +30,9 @@ def encode(ch, keyValue):
                 "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
 
     # Special case characters
-    if ch == "o" or ch == "p" or ch == "t" or ch == "c":
-        return alphabet[(alphabet.index(ch) + keyValue * 2) % 23]
-        
+    if ch == "a" or ch == "e" or ch == "i" or ch == "o" or ch == "u":
+        return alphabet[(alphabet.index(ch) + keyValue * 3) % 23]
+
     # Search in the alphabet the same word
     for i in alphabet:
         if ch == i:
