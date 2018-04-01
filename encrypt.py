@@ -27,7 +27,7 @@ def encrypt(originalText, keyValue, line, text):
 def encode(ch, keyValue):
     # Define a latin alphabet
     alphabet_a = ["b", "d", "f", "h", "l", "n", "p", "r", "t", "v", "y"]
-    alphabet_b = ["a", "c", "e", "g", "i", "m" "o", "q", "s", "u", "x", "z"]
+    alphabet_b = ["a", "c", "e", "g", "i", "m", "o", "q", "s", "u", "x", "z"]
 
     # Search in the alphabet the same word
     for i in alphabet_a:
@@ -43,7 +43,8 @@ def encode(ch, keyValue):
 
 def isExeption(ch):
     return (ch == " " or ch == "," or ch == "." or ch == "\n" or ch == "?"
-            or ch == "!" or ch == ":" or ch == "\"" or ch == ';')
+            or ch == "!" or ch == ":" or ch == "\"" or ch == ';' or ch == "]"
+            or ch == "[")
 
 
 if __name__ == '__main__':

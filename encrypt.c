@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
   if (argc != 4)
   {
-    printf("Invalid number of arguments");
+    printf("Invalid number of arguments\n");
     exit(0);
   }
   else
@@ -87,6 +87,6 @@ char encode(char ch, int keyValue)
 bool isExeption(char ch)
 {
   return ch == ' ' || ch == ',' || ch == '.' || ch == '?' || ch == '!' ||
-  ch == '"' || ch == '\n' || ch == ';' || ch == ':';
+  ch == '"' || ch == '\n' || ch == ';' || ch == ':' || ch == ']' || ch == '[';
 
 }
