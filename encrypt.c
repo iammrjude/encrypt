@@ -73,7 +73,7 @@ char encode(char ch, int keyValue)
     {
         return alphabet_b[(i + (keyValue*2)) % 11];
     }else if (ch== alphabet_a[i]) {
-        return alphabet_a[(i+keyValue % 10)];
+        return alphabet_a[(i + keyValue) % 10];
     }
   }
 }
