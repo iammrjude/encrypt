@@ -37,7 +37,7 @@ def encode(ch, keyValue,):
     for i in alphabet_b:
         if ch == i:
             # Encode the current character
-            if (alphabet_b.index(i) - keyValue * 2) % 11 < alphabet_b.index(i - i)
+            if (alphabet_b.index(i) - keyValue * 2) % 11 < alphabet_b.index(0)
                 return alphabet_b[((alphabet_b.index(i) - keyValue*2) % 11)+11]
             else
                 return alphabet_b[(alphabet_b.index(i) - keyValue * 2) % 11]
