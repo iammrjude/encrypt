@@ -26,18 +26,19 @@ def encrypt(originalText, keyValue, line, text):
 
 def encode(ch, keyValue):
     # Define a latin alphabet
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "l", "m",
-                "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
-
-    # Special case characters
-    if ch == "a" or ch == "e" or ch == "i" or ch == "o" or ch == "u":
-        return alphabet[(alphabet.index(ch) + keyValue * 3) % 23]
+    alphabet_a = ["b", "d", "f", "h", "l", "n", "p", "r", "t", "v", "y"]
+    alphabet_b = ["a", "c", "e", "g", "i", "m" "o", "q", "s", "u", "x", "z"]
 
     # Search in the alphabet the same word
-    for i in alphabet:
+    for i in alphabet_a:
         if ch == i:
             # Encode the current character
-            return alphabet[(alphabet.index(i) + keyValue) % 23]
+            return alphabet_a[((alphabet_a.index(i) + keyValue) % 10)]
+
+    for i in alphabet_b:
+        if ch == i:
+            # Encode the current character
+            return alphabet_b[((alphabet_b.index(i) + keyValue * 2) % 11)]
 
 
 def isExeption(ch):
