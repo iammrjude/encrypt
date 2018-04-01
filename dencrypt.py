@@ -24,7 +24,7 @@ def encrypt(originalText, keyValue, line, text):
         encryptedText.close()
 
 
-def encode(ch, keyValue,):
+def encode(ch, keyValue):
     # Define a latin alphabet
     alphabet_a = ["b", "d", "f", "h", "l","n", "p", "r", "t", "v", "y"]
     alphabet_b = ["a", "c", "e", "g", "i", "m", "o", "q", "s", "u", "x", "z"]
@@ -37,10 +37,7 @@ def encode(ch, keyValue,):
     for i in alphabet_b:
         if ch == i:
             # Encode the current character
-            if (alphabet_b.index(i) - keyValue * 2) % 11 < alphabet_b.index(0)
-                return alphabet_b[((alphabet_b.index(i) - keyValue*2) % 11)+11]
-            else
-                return alphabet_b[(alphabet_b.index(i) - keyValue * 2) % 11]
+            return alphabet_b[(alphabet_b.index(i) - (keyValue * 2)) % 11]
 
 
 
