@@ -62,24 +62,18 @@ void encrypt(int keyValue,FILE *text, FILE *encryptedText)
 char encode(char ch, int keyValue)
 {
   //Define a latin alphabet
-  char *alphabet[23] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm',
-  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z'};
+  char *alphabet_a[11] = {'b', 'd', 'f', 'h', 'l','n', 'p', 'r', 't', 'v', 'y'};
+
+  char *alphabet_b[12] = {'a', 'c', 'e', 'g', 'i', 'm','o', 'q', 's', 'u', 'x', 'z'};
 
   //Search in the alphabet the same word
-  for(int i = 0; i < 23; i++)
+  for(int i = 0; i < 12; i++)
   {
-    if(ch == alphabet[i])
+    if(ch == alphabet_b[i])
     {
-      //Special case characters
-      if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-      {
-        return alphabet[(i + (keyValue * 3)) % 23];
-      }
-      else
-      {
-        //Encode the current character
-        return alphabet[(i + keyValue) % 23];
-      }
+        return alphabet_b[(i + (keyValue*2)) % 11];
+    }else if (ch== alphabet_a[i]) {
+        return alphabet_a[(i+keyValue % 10)];
     }
   }
 }
